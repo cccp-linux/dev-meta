@@ -23,7 +23,7 @@ Depends:
  git,
  mmdebstrap,
  pristine-tar,
- sbuilder,
+ sbuild,
 Recommends:
  bison,
  clang,
