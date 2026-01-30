@@ -1,3 +1,11 @@
+dev-meta (0.3) unstable; urgency=medium
+
+  * Install scripts and settings
+  * Add settings for neovim-gitsigns and vim-fugitive
+  * Rename nvim settings files
+
+ -- Dimitry Ishenko <dimitry.ishenko@gmail.com>  Fri, 30 Jan 2026 16:26:32 -0500
+
 dev-meta (0.2) unstable; urgency=medium
 
   * d/control: fix sbuild name
