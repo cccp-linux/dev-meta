@@ -1,0 +1,25 @@
+#!/bin/bash
+
+name=
+upstream=false
+
+for arg; do
+    case $arg in
+        -R|--recurse) recurse=--recurse-submodules ;;
+        -U|--upstream) upstream=true ;;
+        *) path="$arg" ;;
+    esac
+done
+
+if [[ ! "$path" ]]; then
+    if $upstream; then
+        n=$(basename "$(pwd)")
+        v=$(git tag --sort=-creatordate | head -n1 | sed "s/^v//")
+    else
+        n=$(dpkg-parsechangelog -S Source)
+        v=$(dpkg-parsechangelog -S Version | sed "s/^.\+://; s/-[^-]\+$//")
+    fi
+    path=../${n}_${v}.orig.tar.gz
+fi
+
+git ls-files -z $recurse :^debian | tar -capf "$path" --null -T-

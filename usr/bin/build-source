@@ -1,0 +1,2 @@
+#!/bin/bash
+dpkg-buildpackage --build=source --no-check-builddeps --no-pre-clean "$@"

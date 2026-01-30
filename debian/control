@@ -1,0 +1,44 @@
+Source: dev-meta
+Section: metapackages
+Priority: optional
+Maintainer: Dimitry Ishenko <dimitry.ishenko@gmail.com>
+Rules-Requires-Root: no
+Build-Depends:
+ debhelper-compat (= 13),
+Standards-Version: 4.7.2
+Vcs-Browser: https://github.com/cccp-linux/dev-meta
+Vcs-Git: https://github.com/cccp-linux/dev-meta.git
+
+Package: dev-meta
+Architecture: all
+Depends:
+ ${misc:Depends},
+ build-essential,
+ cmake,
+ debchange,
+ decopy,
+ dh-make,
+ dpkg-dev,
+ gdb,
+ git,
+ mmdebstrap,
+ pristine-tar,
+ sbuilder,
+Recommends:
+ bison,
+ clang,
+ clangd,
+ eatmydata,
+ flex,
+ libelf-dev,
+ libncurses-dev,
+ manpages-dev,
+ manpages-posix,
+ neovim-gitsigns,
+ neovim-lspconfig,
+ neovim-statuscol,
+ python3-pip,
+ python3-pylsp,
+ python3-pylsp-rope,
+ vim-fugitive,
+Description: Development meta-package
