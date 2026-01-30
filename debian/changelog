@@ -1,5 +1,7 @@
-dev-meta (0.1) UNRELEASED; urgency=medium
+dev-meta (0.1) unstable; urgency=medium
 
-  * Initial release.
+  * Add LICENSE.md
+  * README.md: update
+  * Import project
 
- -- Dimitry Ishenko <dimitry.ishenko@gmail.com>  Wed, 28 Jan 2026 11:30:58 -0500
+ -- Dimitry Ishenko <dimitry.ishenko@gmail.com>  Fri, 30 Jan 2026 14:02:59 -0500
