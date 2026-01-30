@@ -1,3 +1,10 @@
+dev-meta (0.2) unstable; urgency=medium
+
+  * d/control: fix sbuild name
+  * README.md: update
+
+ -- Dimitry Ishenko <dimitry.ishenko@gmail.com>  Fri, 30 Jan 2026 15:28:41 -0500
+
 dev-meta (0.1) unstable; urgency=medium
 
   * Add LICENSE.md
