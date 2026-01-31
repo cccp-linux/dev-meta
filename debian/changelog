@@ -1,3 +1,9 @@
+dev-meta (0.4) unstable; urgency=medium
+
+  * Work without nvim-lspconfig
+
+ -- Dimitry Ishenko <dimitry.ishenko@gmail.com>  Fri, 30 Jan 2026 19:39:55 -0500
+
 dev-meta (0.3) unstable; urgency=medium
 
   * Install scripts and settings
