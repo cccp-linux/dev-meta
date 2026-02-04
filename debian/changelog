@@ -1,3 +1,13 @@
+dev-meta (0.5) unstable; urgency=medium
+
+  * Add minimal config
+  * build-chroot: use home dir
+  * build-chroot: explicit unshare mode
+  * build-binary: work on Debian
+  * d/copyright: add license text
+
+ -- Dimitry Ishenko <dimitry.ishenko@gmail.com>  Tue, 03 Feb 2026 21:16:24 -0500
+
 dev-meta (0.4) unstable; urgency=medium
 
   * Work without nvim-lspconfig
