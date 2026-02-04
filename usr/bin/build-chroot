@@ -7,10 +7,11 @@ echo "Creating chroot for $(tput bold)$ARCH $DIST$(tput sgr0)..."
 sleep 3
 
 args=(
-    --variant=buildd
-    --skip=output/dev
-    --include=aptitude,ca-certificates,ccache,eatmydata
     --customize-hook='chroot "$1" update-ccache-symlinks'
+    --include=aptitude,ca-certificates,ccache,eatmydata
+    --mode=unshare
+    --skip=output/dev
+    --variant=buildd
 )
 ubuntu-distro-info --all | grep -qx $DIST && args+=(--components=main,universe)
 
