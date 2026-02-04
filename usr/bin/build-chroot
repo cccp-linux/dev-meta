@@ -15,4 +15,4 @@ args=(
 )
 ubuntu-distro-info --all | grep -qx $DIST && args+=(--components=main,universe)
 
-mmdebstrap -v "${args[@]}" "$DIST" "/var/cache/sbuild/$DIST-$ARCH.tar.zst"
+mmdebstrap -v "${args[@]}" "$DIST" "$HOME/.cache/sbuild/$DIST-$ARCH.tar.zst" "$@"
