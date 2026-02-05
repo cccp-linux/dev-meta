@@ -1,6 +1,6 @@
 # config.pl
 
-$build_dep_resolver = "aptitude";
+# $build_dep_resolver = "aptitude";
 $chroot_mode = "unshare";
 
 $external_commands = {
