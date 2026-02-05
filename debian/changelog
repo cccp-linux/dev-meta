@@ -1,3 +1,9 @@
+dev-meta (0.6) unstable; urgency=medium
+
+  * config.pl: don't force aptitude
+
+ -- Dimitry Ishenko <dimitry.ishenko@gmail.com>  Wed, 04 Feb 2026 22:30:11 -0500
+
 dev-meta (0.5) unstable; urgency=medium
 
   * Add minimal config
