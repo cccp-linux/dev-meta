@@ -1,3 +1,9 @@
+dev-meta (0.7) unstable; urgency=medium
+
+  * d/control: recommend git-credential-oauth
+
+ -- Dimitry Ishenko <dimitry.ishenko@gmail.com>  Wed, 25 Feb 2026 22:17:18 -0500
+
 dev-meta (0.6) unstable; urgency=medium
 
   * config.pl: don't force aptitude
