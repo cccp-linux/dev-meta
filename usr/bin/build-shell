@@ -1,7 +1,12 @@
 #!/bin/bash
 
+bold=$(tput bold) dim=$(tput dim) norm=$(tput sgr0)
+
 case "$1" in
-    --help|-h) printf "\nUsage: `tput dim`[ARCH=…] [DIST=…]`tput sgr0` $0 [--minimal|-m]\n\n";;
+    --help|-h) printf "
+Usage: ${dim}[ARCH=…] [DIST=…]${norm} ${bold}$(basename "$0")${norm} [--minimal|-m]
+
+";;
 
     *)  case "$1" in
             --minimal|-m) phase="chroot-setup";;
