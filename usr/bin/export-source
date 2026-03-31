@@ -1,7 +1,12 @@
 #!/bin/bash
 
+bold=$(tput bold) dim=$(tput dim) norm=$(tput sgr0)
+
 case "$1" in
-    --help|-h) printf "\nUsage: $0 [-R|--recursive] `tput dim`[package_0.42.orig.tar.{bz2,gz,xz}]`tput sgr0`\n\n";;
+    --help|-h) printf "
+Usage: ${bold}$(basename "$0")${norm} [-R|--recursive] ${dim}[package_0.42.orig.tar.{bz2,gz,xz}]${norm}
+
+";;
 
     *)  case "$1" in
             -R|--recurse) recurse=--recurse-submodules; shift;;
