@@ -55,5 +55,29 @@ debian-release()
     git-debian-tag
 }
 
-# detect if this script was sourced, and if so just export the functions
-[[ "$0" == *bash ]] || debian-release
+# detect if this script was sourced
+[[ "$0" == *bash ]] || case "$1" in
+    --help|-h) printf "
+Usage: [source] `tput bold`$0`tput sgr0`
+
+When prefixed with 'source', `tput bold`$0`tput sgr0` will export the following functions
+and let you do your thing:
+
+* dch-add-from-stdin
+* dch-bump-version
+* dch-commit
+* dch-release
+* debian-release
+* git-debian-tag
+* git-log-oneline
+
+Otherwise, it will run the following:
+
+1. (optional) dch-bump-version
+2. git-log-oneline <prev>.. | dch-add-from-stdin
+3. dch-release
+4. dch-commit
+5. git-debian-tag\n\n";;
+
+    *) debian-release;;
+esac
