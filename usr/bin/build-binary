@@ -3,8 +3,14 @@
 ARCH=${ARCH:-$(dpkg-architecture -q DEB_BUILD_ARCH)}
 DIST=${DIST:-$(lsb_release -cs)}
 
-export PATH=$PATH:/usr/sbin:/sbin
-eatmydata=$(ldconfig -p | grep libeatmydata.so | awk '{print $4}' | head -n1)
-[[ -e "$eatmydata" ]] && export LD_PRELOAD="$eatmydata${LD_PRELOAD:+:$LD_PRELOAD}"
+case "$1" in
+    --help|-h) printf "\nUsage: `tput dim`[ARCH=…] [DIST=…]`tput sgr0` $0 [options] <file.dsc>
+See `tput bold`man sbuild`tput sgr0` for details.\n\n";;
 
-sbuild -v --arch="$ARCH" --dist="$DIST" "$@"
+    *)  export PATH=$PATH:/usr/sbin:/sbin
+        eatmydata=$(ldconfig -p | grep libeatmydata.so | awk '{print $4}' | head -n1)
+        [[ -e "$eatmydata" ]] && export LD_PRELOAD="$eatmydata${LD_PRELOAD:+:$LD_PRELOAD}"
+
+        sbuild -v --arch="$ARCH" --dist="$DIST" "$@"
+    ;;
+esac
