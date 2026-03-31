@@ -60,12 +60,14 @@ debian-release()
     git-debian-tag
 }
 
+bold=$(tput bold) dim=$(tput dim) norm=$(tput sgr0)
+
 # detect if this script was sourced
 [[ "$0" == *bash ]] || case "$1" in
     --help|-h) printf "
-Usage: [source] `tput bold`$0`tput sgr0`
+Usage: ${dim}[source]${norm} ${bold}$(basename "$0")${norm}
 
-When prefixed with 'source', `tput bold`$0`tput sgr0` will export the following functions
+When prefixed with ${dim}source${norm}, ${bold}$(basename "$0")${norm} will export the following functions
 and let you do your thing:
 
 * dch-add-from-stdin
