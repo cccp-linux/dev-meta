@@ -1,25 +1,26 @@
 #!/bin/bash
 
-name=
-upstream=false
+case "$1" in
+    --help|-h) printf "\nUsage: $0 [-R|--recursive] `tput dim`[package_0.42.orig.tar.{bz2,gz,xz}]`tput sgr0`\n\n";;
 
-for arg; do
-    case $arg in
-        -R|--recurse) recurse=--recurse-submodules ;;
-        -U|--upstream) upstream=true ;;
-        *) path="$arg" ;;
-    esac
-done
+    *)  case "$1" in
+            -R|--recurse) recurse=--recurse-submodules; shift;;
+        esac
 
-if [[ ! "$path" ]]; then
-    if $upstream; then
-        n=$(basename "$(pwd)")
-        v=$(git tag --sort=-creatordate | head -n1 | sed "s/^v//")
-    else
-        n=$(dpkg-parsechangelog -S Source)
-        v=$(dpkg-parsechangelog -S Version | sed "s/^.\+://; s/-[^-]\+$//")
-    fi
-    path=../${n}_${v}.orig.tar.gz
-fi
+        path="$1"
+        if [[ ! "$path" ]]; then
+            if [[ -f debian/changelog ]]; then
+                n=$(dpkg-parsechangelog -S Source)
+                v=$(dpkg-parsechangelog -S Version | sed "s/^.\+://; s/-[^-]\+$//")
+            else
+                n=$(basename "`pwd`")
+                v=$(git tag --sort=-creatordate --merge | head -n1 | sed "s/^v//")
+            fi
 
-git ls-files -z $recurse :^debian | tar -capf "$path" --null -T-
+            path=../${n}_${v}.orig.tar.gz
+            echo "Creating source package `tput bold`$path`tput sgr0`"
+        fi
+
+        git ls-files -z $recurse :^debian | tar -capf "$path" --null -T-
+    ;;
+esac
