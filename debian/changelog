@@ -1,3 +1,14 @@
+dev-meta (0.10) unstable; urgency=medium
+
+  * export-source: nicer output
+  * debian-release: nicer output
+  * build-source: nicer output
+  * build-shell: nicer output
+  * build-chroot: nicer output
+  * build-binary: nicer output
+
+ -- Dimitry Ishenko <dimitry.ishenko@gmail.com>  Tue, 31 Mar 2026 15:13:55 -0400
+
 dev-meta (0.9) unstable; urgency=medium
 
   * debian-release: add a way to abort the release
