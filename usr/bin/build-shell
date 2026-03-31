@@ -1,0 +1,12 @@
+#!/bin/bash
+
+case "$1" in
+    --help|-h) printf "\nUsage: `tput dim`[ARCH=…] [DIST=…]`tput sgr0` $0 [--minimal|-m]\n\n";;
+
+    *)  case "$1" in
+            --minimal|-m) phase="chroot-setup";;
+            *) phase="starting-build";;
+        esac
+        build-binary --nolog --${phase}-commands="%SBUILD_SHELL" --${phase}-commands="false" hello
+    ;;
+esac
