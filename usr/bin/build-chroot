@@ -3,9 +3,15 @@
 ARCH=${ARCH:-$(dpkg-architecture -q DEB_BUILD_ARCH)}
 DIST=${DIST:-$(lsb_release -cs)}
 
+bold=$(tput bold) dim=$(tput dim) norm=$(tput sgr0)
+
 case "$1" in
-    --help|-h) printf "\nUsage: `tput dim`[ARCH=…] [DIST=…]`tput sgr0` $0 [options]
-See `tput bold`man mmdebstrap`tput sgr0` for details.\n\n";;
+    --help|-h) printf "
+Usage: ${dim}[ARCH=…] [DIST=…]${norm} ${bold}$(basename "$0")${norm} [options...]
+
+See ${bold}man mmdebstrap${norm} for details.
+
+";;
 
     *) args=(
             --customize-hook='chroot "$1" update-ccache-symlinks'
