@@ -1,3 +1,15 @@
+dev-meta (0.9) unstable; urgency=medium
+
+  * debian-release: add a way to abort the release
+  * debian-release: add --help option
+  * export-source: update and add --help option
+  * Add build-shell script
+  * build-source: add --help option
+  * build-chroot: add --help option
+  * build-binary: add --help option
+
+ -- Dimitry Ishenko <dimitry.ishenko@gmail.com>  Tue, 31 Mar 2026 14:35:24 -0400
+
 dev-meta (0.8) unstable; urgency=medium
 
   * d/control: recommend qemu-user-binfmt
