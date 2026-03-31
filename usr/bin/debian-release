@@ -15,9 +15,14 @@ dch-bump-version()
 {
     dch -Ui "Check version above and delete this line"
     dch -e
+    dpkg-parsechangelog -S Source >/dev/null 2>&1
 }
 
-dch-release() { dch -rD unstable; }
+dch-release()
+{
+    dch -rD unstable
+    dpkg-parsechangelog -S Source >/dev/null 2>&1
+}
 
 dch-commit()
 {
@@ -41,7 +46,7 @@ debian-release()
     if [[ "$distro" == "UNRELEASED" ]]; then
         ver=$(dpkg-parsechangelog -u $ver -S Version)
     else
-        dch-bump-version
+        dch-bump-version || return
     fi
 
     local tag=debian/$(echo $ver | tr ':~' '%_')
@@ -50,7 +55,7 @@ debian-release()
     else
         git-log-oneline | dch-add-from-stdin
     fi
-    dch-release
+    dch-release || return
     dch-commit
     git-debian-tag
 }
