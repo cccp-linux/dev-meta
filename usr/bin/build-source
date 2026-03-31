@@ -1,2 +1,6 @@
 #!/bin/bash
-dpkg-buildpackage --build=source --no-check-builddeps --no-pre-clean "$@"
+case "$1" in
+    --help|-h) printf "\nSee `tput bold`man dpkg-buildpackage`tput sgr0` for details.\n\n";;
+
+    *) dpkg-buildpackage --build=source --no-check-builddeps --no-pre-clean "$@";;
+esac
