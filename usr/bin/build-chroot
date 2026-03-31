@@ -3,16 +3,18 @@
 ARCH=${ARCH:-$(dpkg-architecture -q DEB_BUILD_ARCH)}
 DIST=${DIST:-$(lsb_release -cs)}
 
-echo "Creating chroot for $(tput bold)$ARCH $DIST$(tput sgr0)..."
-sleep 3
+case "$1" in
+    --help|-h) printf "\nUsage: `tput dim`[ARCH=…] [DIST=…]`tput sgr0` $0 [options]
+See `tput bold`man mmdebstrap`tput sgr0` for details.\n\n";;
 
-args=(
-    --customize-hook='chroot "$1" update-ccache-symlinks'
-    --include=aptitude,ca-certificates,ccache,eatmydata
-    --mode=unshare
-    --skip=output/dev
-    --variant=buildd
-)
-ubuntu-distro-info --all | grep -qx $DIST && args+=(--components=main,universe)
-
-mmdebstrap -v "${args[@]}" "$DIST" "$HOME/.cache/sbuild/$DIST-$ARCH.tar.zst" "$@"
+    *) args=(
+            --customize-hook='chroot "$1" update-ccache-symlinks'
+            --include=aptitude,ca-certificates,ccache,eatmydata
+            --mode=unshare
+            --skip=output/dev
+            --variant=buildd
+        )
+        ubuntu-distro-info --all | grep -qx $DIST && args+=(--components=main,universe)
+        mmdebstrap -v "${args[@]}" "$DIST" "$HOME/.cache/sbuild/$DIST-$ARCH.tar.zst" "$@"
+    ;;
+esac
