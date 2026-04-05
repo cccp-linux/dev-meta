@@ -42,5 +42,6 @@ Recommends:
  python3-pylsp,
  python3-pylsp-rope,
  qemu-user-binfmt,
+ reportbug,
  vim-fugitive,
 Description: Development meta-package
