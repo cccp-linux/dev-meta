@@ -1,3 +1,9 @@
+dev-meta (0.13) unstable; urgency=medium
+
+  * d/control: neovim-statuscol is part of neovim-meta
+
+ -- Dimitry Ishenko <dimitry.ishenko@gmail.com>  Sun, 05 Apr 2026 01:11:28 -0400
+
 dev-meta (0.12) unstable; urgency=medium
 
   * d/control: recommend reportbug
