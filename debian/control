@@ -37,7 +37,6 @@ Recommends:
  manpages-posix,
  neovim-gitsigns,
  neovim-lspconfig,
- neovim-statuscol,
  python3-pip,
  python3-pylsp,
  python3-pylsp-rope,
