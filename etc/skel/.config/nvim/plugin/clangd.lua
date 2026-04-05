@@ -17,6 +17,7 @@ end
 
 vim.lsp.config("clangd", {
     cmd = {"clangd", "--compile-commands-dir=build", "--header-insertion=never"},
+    filetypes = {"c", "cpp", "cuda", "objc", "objcpp"},
     root_markers = {
         "build",
         ".clangd",
