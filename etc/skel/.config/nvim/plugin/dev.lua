@@ -33,7 +33,7 @@ vim.cmd([[
 ]])
 
 map("n", "<f4>", "<cmd>Termdebug<cr>")
-map("n", "<f16>", "<cmd>Source<cr><cmd>wincmd L<cr>")
+map("n", "<f16>", "<cmd>Source<cr><cmd>wincmd L<cr>") -- s-f4
 
 map("n", "<f5>", "<cmd>Run<cr>")
 map("n", "<f17>", "<cmd>Stop<cr>") -- s-f5
