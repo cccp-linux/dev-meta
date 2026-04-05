@@ -7,6 +7,6 @@ local function map(mode, lhs, rhs)
 end
 
 map("n", "<leader>gb", "<cmd>Git blame<cr>")
-map("n", "<leader>gd", "<cmd>Gdiffsplit<cr>")
+map("n", "<leader>gd", "<cmd>Gvdiffsplit<cr>")
 map("n", "<leader>gg", "<cmd>Git<cr>")
 map("n", "<leader>gl", "<cmd>Git log --oneline<cr>")
