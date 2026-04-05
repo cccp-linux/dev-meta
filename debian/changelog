@@ -1,3 +1,9 @@
+dev-meta (0.12) unstable; urgency=medium
+
+  * d/control: recommend reportbug
+
+ -- Dimitry Ishenko <dimitry.ishenko@gmail.com>  Sat, 04 Apr 2026 22:50:06 -0400
+
 dev-meta (0.11) unstable; urgency=medium
 
   * config.pl: don't check space
