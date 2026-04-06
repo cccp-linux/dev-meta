@@ -13,6 +13,7 @@ Package: dev-meta
 Architecture: all
 Depends:
  ${misc:Depends},
+ arch-test,
  build-essential,
  cmake,
  debchange,
