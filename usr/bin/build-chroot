@@ -14,6 +14,7 @@ See ${bold}man mmdebstrap${norm} for details.
 ";;
 
     *) args=(
+            --arch="$ARCH"
             --customize-hook='chroot "$1" update-ccache-symlinks'
             --include=aptitude,ca-certificates,ccache,eatmydata
             --mode=unshare
