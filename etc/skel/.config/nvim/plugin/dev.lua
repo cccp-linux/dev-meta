@@ -18,6 +18,10 @@ map("n", "<leader>mb", ":CMake --build build -j `nproc`")
 map("n", "<leader>mg", ":CMake -B build")
 map("n", "<leader>mx", ":CMake -E rm -rf build")
 
+-- diff
+map("n", "<leader>do", ":windo diffoff<cr>")
+map("n", "<leader>dt", ":windo diffthis<cr>")
+
 -- termdebug
 vim.cmd([[
     packadd termdebug
