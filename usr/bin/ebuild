@@ -1,0 +1,6 @@
+#!/bin/bash
+
+eatmydata=$(/usr/sbin/ldconfig -p | grep libeatmydata.so | awk '{print $4}' | head -n1)
+[[ -e "$eatmydata" ]] && export LD_PRELOAD="$eatmydata${LD_PRELOAD:+:$LD_PRELOAD}"
+
+exec sbuild "$@"
