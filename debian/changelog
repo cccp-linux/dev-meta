@@ -1,3 +1,13 @@
+dev-meta (0.16) unstable; urgency=medium
+
+  * build-shell => sbuild-shell + ebuild-shell
+  * Use sbuild/ebuild -d
+  * Use dpkg-buildpackage -Sd -nc
+  * Add sbuild version with eatmydata
+  * Make sbuild auto-create/update chroots
+
+ -- Dimitry Ishenko <dimitry.ishenko@gmail.com>  Tue, 21 Apr 2026 11:51:09 -0400
+
 dev-meta (0.15) unstable; urgency=medium
 
   * dev.lua: add diff maps
