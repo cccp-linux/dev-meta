@@ -29,6 +29,7 @@ Recommends:
  bison,
  clang,
  clangd,
+ designer-qt6,
  eatmydata,
  flex,
  git-credential-oauth,
