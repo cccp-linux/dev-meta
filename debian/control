@@ -33,7 +33,6 @@ Recommends:
  eatmydata,
  flex,
  git-credential-oauth,
- git-lfs,
  libelf-dev,
  libncurses-dev,
  manpages-dev,
