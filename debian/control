@@ -26,6 +26,7 @@ Depends:
  pristine-tar,
  sbuild,
 Recommends:
+ aprox,
  bison,
  clang,
  clangd,
