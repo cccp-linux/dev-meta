@@ -1,3 +1,9 @@
+dev-meta (0.23) unstable; urgency=medium
+
+  * sbuild/config.pl: add stub for proxy
+
+ -- Dimitry Ishenko <dimitry.ishenko@gmail.com>  Sat, 30 May 2026 22:42:19 -0400
+
 dev-meta (0.22) unstable; urgency=medium
 
   * d/control: recommend aprox
