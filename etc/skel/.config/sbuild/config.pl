@@ -31,6 +31,7 @@ $unshare_mmdebstrap_extra_args = [
     "*" => [ "--verbose",
         "--customize-hook=chroot \$1 update-ccache-symlinks",
         "--include=aptitude,ca-certificates,ccache,eatmydata",
+#       '--aptopt=Acquire::http { Proxy "http://127.0.0.1:3142"; }',
     ],
     map { $_ => [ "--components=main,universe" ] } @ubuntu_distros,
 ];
