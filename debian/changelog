@@ -1,3 +1,10 @@
+dev-meta (0.24) unstable; urgency=medium
+
+  * Add Debian release workflow
+  * dev.lua: tweak
+
+ -- Dimitry Ishenko <dimitry.ishenko@gmail.com>  Mon, 22 Jun 2026 12:56:33 -0400
+
 dev-meta (0.23) unstable; urgency=medium
 
   * sbuild/config.pl: add stub for proxy
