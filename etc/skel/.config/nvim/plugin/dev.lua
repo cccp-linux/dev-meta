@@ -19,8 +19,8 @@ map("n", "<leader>mg", ":CMake -B build")
 map("n", "<leader>mx", ":CMake -E rm -rf build")
 
 -- diff
-map("n", "<leader>do", ":windo diffoff<cr>")
-map("n", "<leader>dt", ":windo diffthis<cr>")
+map("n", "<leader>do", "<cmd>windo diffoff<cr>")
+map("n", "<leader>dt", "<cmd>windo diffthis<cr>")
 
 -- termdebug
 vim.cmd([[
