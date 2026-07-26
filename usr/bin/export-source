@@ -4,7 +4,7 @@ bold=$(tput bold) dim=$(tput dim) norm=$(tput sgr0)
 
 case "$1" in
     --help|-h) printf "
-Usage: ${bold}$(basename "$0")${norm} [-R|--recursive] ${dim}[package_0.42.orig.tar.{bz2,gz,xz}]${norm}
+Usage: ${bold}$(basename "$0")${norm} [-R|--recurse] ${dim}[package_0.42.orig.tar.{bz2,gz,xz}]${norm}
 
 ";;
 
@@ -18,12 +18,12 @@ Usage: ${bold}$(basename "$0")${norm} [-R|--recursive] ${dim}[package_0.42.orig.
                 n=$(dpkg-parsechangelog -S Source)
                 v=$(dpkg-parsechangelog -S Version | sed "s/^.\+://; s/-[^-]\+$//")
             else
-                n=$(basename "`pwd`")
-                v=$(git tag --sort=-creatordate --merge | head -n1 | sed "s/^v//")
+                n=$(basename "$PWD")
+                v=$(git tag --sort=-creatordate --merged | head -n1 | sed "s/^v//")
             fi
 
             path=../${n}_${v}.orig.tar.gz
-            echo "Creating source package `tput bold`$path`tput sgr0`"
+            echo "Creating source package ${bold}${path}${norm}"
         fi
 
         args=(--sort=name --mtime='@0' --owner=0 --group=0 --numeric-owner)
