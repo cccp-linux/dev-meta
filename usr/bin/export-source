@@ -26,6 +26,7 @@ Usage: ${bold}$(basename "$0")${norm} [-R|--recursive] ${dim}[package_0.42.orig.
             echo "Creating source package `tput bold`$path`tput sgr0`"
         fi
 
-        git ls-files -z $recurse :^debian | tar -capf "$path" --null -T-
+        args=(--sort=name --mtime='@0' --owner=0 --group=0 --numeric-owner)
+        git ls-files -z $recurse :^debian | tar -capf "$path" "${args[@]}" --null -T-
     ;;
 esac
