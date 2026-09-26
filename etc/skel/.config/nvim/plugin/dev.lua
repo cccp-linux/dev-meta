@@ -2,6 +2,26 @@ local function map(mode, lhs, rhs)
     vim.keymap.set(mode, lhs, rhs, {noremap = true})
 end
 
+-- highlight
+vim.api.nvim_create_autocmd("LspAttach", {
+    callback = function(args)
+        local client = vim.lsp.get_client_by_id(args.data.client_id)
+        if not client or not client.server_capabilities.documentHighlightProvider then
+            return
+        end
+
+        vim.keymap.set("n", "<leader>h", vim.lsp.buf.document_highlight, {buffer = args.buf})
+
+        local group = vim.api.nvim_create_augroup("LspDocHighlight", {clear = false})
+        vim.api.nvim_clear_autocmds({buffer = args.buf, group = group})
+
+        vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
+            buffer = args.buf, group = group,
+            callback = vim.lsp.buf.clear_references,
+        })
+    end
+})
+
 -- CMake
 vim.api.nvim_create_user_command("CMake", function(opts)
    local mp0 = vim.opt.makeprg
