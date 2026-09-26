@@ -52,26 +52,50 @@ vim.cmd([[
 
     let g:termdebug_config.signs = ["󰲠", "󰲢", "󰲤", "󰲦", "󰲨", "󰲪", "󰲬", "󰲮", "󰲰"]
     let g:termdebug_config.sign = "󰲲"
+    let g:termdebug_config.wide = 1
 
     highlight debugBreakpoint ctermfg=darkred ctermbg=NONE guifg=darkred guibg=NONE
 ]])
 
-map("n", "<f4>", "<cmd>Termdebug<cr>")
-map("n", "<f16>", "<cmd>Source<cr><cmd>wincmd L<cr>") -- s-f4
+-- Debug
+vim.api.nvim_create_user_command("Debug", function(opts)
+    local spr = vim.opt.splitright
+    vim.opt.splitright = false
 
-map("n", "<f5>", "<cmd>Run<cr>")
-map("n", "<f17>", "<cmd>Stop<cr>") -- s-f5
-map("n", "<f29>", "<cmd>Cont<cr>") -- c-f5
+    vim.cmd("Termdebug " .. opts.args)
+    vim.api.nvim_win_set_width(0, 42)
 
-map("n", "<f6>", "<cmd>Gdb<cr>")
-map("n", "<f18>", "<cmd>Source<cr>") -- s-f6
-map("n", "<f30>", "<cmd>Program<cr>") -- c-f6
+    vim.opt.splitright = spr
+end, {nargs = "*", complete = "file"})
+
+-- Launch
+vim.api.nvim_create_user_command("Launch", function(opts)
+    local spr = vim.opt.splitright
+    vim.opt.splitright = false
+
+    vim.cmd("TermdebugCommand " .. opts.args)
+    vim.api.nvim_win_set_width(0, 42)
+
+    vim.opt.splitright = spr
+    vim.cmd("wincmd p | stopinsert")
+end, {nargs = "+", complete = "file"})
+
+if type(create_alias) == "function" then
+   create_alias("launch", "Launch")
+end
+
+map("n", "<f5>", "<cmd>Cont<cr>")
+map("n", "<c-f5>", "<cmd>Run<cr>")
+map("n", "<s-f5>", "<cmd>Stop<cr>")
 
 map("n", "<f9>", "<cmd>Break<cr>")
-map("n", "<f21>", "<cmd>Clear<cr>") -- s-f9
+map("n", "<s-f9>", "<cmd>Clear<cr>")
 
 map("n", "<f10>", "<cmd>Over<cr>")
-map("n", "<f34>", "<cmd>Until<cr>") -- c-f10
+map("n", "<c-f10>", "<cmd>Until<cr>")
 
 map("n", "<f11>", "<cmd>Step<cr>")
-map("n", "<f23>", "<cmd>Finish<cr>") -- s-f11
+map("n", "<s-f11>", "<cmd>Finish<cr>")
+
+map("n", "<f12>", "<cmd>Eval<cr>")
+map("v", "<f12>", ":'<,'>Eval<cr>")
