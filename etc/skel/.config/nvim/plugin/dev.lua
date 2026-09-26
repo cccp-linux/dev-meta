@@ -10,10 +10,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
             return
         end
 
-        vim.keymap.set("n", "<leader>h", vim.lsp.buf.document_highlight, {buffer = args.buf})
+        vim.keymap.set("n", "<leader>h", vim.lsp.buf.document_highlight, { buffer = args.buf })
 
-        local group = vim.api.nvim_create_augroup("LspDocHighlight", {clear = false})
-        vim.api.nvim_clear_autocmds({buffer = args.buf, group = group})
+        local group = vim.api.nvim_create_augroup("LspDocHighlight", { clear = false })
+        vim.api.nvim_clear_autocmds({ buffer = args.buf, group = group })
 
         vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
             buffer = args.buf, group = group,
@@ -28,7 +28,7 @@ vim.api.nvim_create_user_command("CMake", function(opts)
    vim.opt.makeprg = "cmake"
    vim.cmd("make " .. table.concat(opts.fargs, " "))
    vim.opt.makeprg = mp0
-end, {nargs = "*"})
+end, { nargs = "*" })
 
 if type(create_alias) == "function" then
    create_alias("cmake", "CMake")
@@ -66,7 +66,7 @@ vim.api.nvim_create_user_command("Debug", function(opts)
     vim.api.nvim_win_set_width(0, 42)
 
     vim.opt.splitright = spr
-end, {nargs = "*", complete = "file"})
+end, { nargs = "*", complete = "file" })
 
 -- Launch
 vim.api.nvim_create_user_command("Launch", function(opts)
@@ -78,24 +78,24 @@ vim.api.nvim_create_user_command("Launch", function(opts)
 
     vim.opt.splitright = spr
     vim.cmd("wincmd p | stopinsert")
-end, {nargs = "+", complete = "file"})
+end, { nargs = "+", complete = "file" })
 
 if type(create_alias) == "function" then
    create_alias("launch", "Launch")
 end
 
-map("n", "<f5>", "<cmd>Cont<cr>")
-map("n", "<c-f5>", "<cmd>Run<cr>")
-map("n", "<s-f5>", "<cmd>Stop<cr>")
+map("n", "<f5>",    "<cmd>Cont<cr>"  )
+map("n", "<c-f5>",  "<cmd>Run<cr>"   )
+map("n", "<s-f5>",  "<cmd>Stop<cr>"  )
 
-map("n", "<f9>", "<cmd>Break<cr>")
-map("n", "<s-f9>", "<cmd>Clear<cr>")
+map("n", "<f9>",    "<cmd>Break<cr>" )
+map("n", "<s-f9>",  "<cmd>Clear<cr>" )
 
-map("n", "<f10>", "<cmd>Over<cr>")
-map("n", "<c-f10>", "<cmd>Until<cr>")
+map("n", "<f10>",   "<cmd>Over<cr>"  )
+map("n", "<c-f10>", "<cmd>Until<cr>" )
 
-map("n", "<f11>", "<cmd>Step<cr>")
+map("n", "<f11>",   "<cmd>Step<cr>"  )
 map("n", "<s-f11>", "<cmd>Finish<cr>")
 
-map("n", "<f12>", "<cmd>Eval<cr>")
-map("v", "<f12>", ":'<,'>Eval<cr>")
+map("n", "<f12>",   "<cmd>Eval<cr>"  )
+map("v", "<f12>",   ":'<,'>Eval<cr>" )

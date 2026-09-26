@@ -1,35 +1,29 @@
 require("gitsigns").setup({
     signs = {
-        delete      = {text = "╽"},
-        topdelete   = {text = "╿"},
-        changedelete= {text = "╽"},
+        delete      = { text = "╽" },
+        topdelete   = { text = "╿" },
+        changedelete= { text = "╽" },
     },
     signs_staged = {
-        delete      = {text = "╽"},
-        topdelete   = {text = "╿"},
-        changedelete= {text = "╽"},
+        delete      = { text = "╽" },
+        topdelete   = { text = "╿" },
+        changedelete= { text = "╽" },
     },
     on_attach = function(bufnr)
         local gs = require("gitsigns")
 
         local function bufmap(mode, lhs, rhs)
-            vim.keymap.set(mode, lhs, rhs, {buffer = bufnr})
+            vim.keymap.set(mode, lhs, rhs, { buffer = bufnr })
         end
 
         bufmap("n", "]c", function()
-            if vim.wo.diff then
-                vim.cmd.normal({"]c", bang = true})
-            else
-                gs.nav_hunk("next")
-            end
+            if vim.wo.diff then vim.cmd.normal({ "]c", bang = true })
+            else gs.nav_hunk("next") end
         end)
 
         bufmap("n", "[c", function()
-            if vim.wo.diff then
-                vim.cmd.normal({"[c", bang = true})
-            else
-                gs.nav_hunk("prev")
-            end
+            if vim.wo.diff then vim.cmd.normal({ "[c", bang = true })
+            else gs.nav_hunk("prev") end
         end)
 
         bufmap("n", "<leader>hs", gs.stage_hunk)

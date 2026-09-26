@@ -1,6 +1,6 @@
 vim.lsp.config("pylsp", {
-    cmd = {"pylsp"},
-    filetypes = {"python"},
+    cmd = { "pylsp" },
+    filetypes = { "python" },
     root_markers = {
         ".git",
         "Pipfile",
@@ -10,5 +10,4 @@ vim.lsp.config("pylsp", {
         "setup.py",
     },
 })
-
 vim.lsp.enable("pylsp")

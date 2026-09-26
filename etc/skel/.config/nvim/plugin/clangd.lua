@@ -16,8 +16,8 @@ local function switch_source_header(client, bufnr)
 end
 
 vim.lsp.config("clangd", {
-    cmd = {"clangd", "--compile-commands-dir=build", "--header-insertion=never"},
-    filetypes = {"c", "cpp", "cuda", "objc", "objcpp"},
+    cmd = { "clangd", "--compile-commands-dir=build", "--header-insertion=never" },
+    filetypes = { "c", "cpp", "cuda", "objc", "objcpp" },
     root_markers = {
         "build",
         ".clangd",
@@ -31,10 +31,9 @@ vim.lsp.config("clangd", {
     on_attach = function(client, bufnr)
         vim.api.nvim_buf_create_user_command(bufnr, "LspClangdSwitchSourceHeader",
             function() switch_source_header(client, bufnr) end,
-            {desc = "Switch between source/header"}
+            { desc = "Switch between source/header" }
         )
-        vim.keymap.set("n", "gh", "<cmd>LspClangdSwitchSourceHeader<cr>", {buffer = bufnr})
+        vim.keymap.set("n", "gh", "<cmd>LspClangdSwitchSourceHeader<cr>", { buffer = bufnr })
     end
 })
-
 vim.lsp.enable("clangd")
