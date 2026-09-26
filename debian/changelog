@@ -1,3 +1,13 @@
+dev-meta (0.25) unstable; urgency=medium
+
+  * dev.lua: add Debug and Launch commands
+  * dev.lua: highlight symbols with <leader>h
+  * clangd.lua: tweak
+  * export-source: typos and tweaks
+  * export-source: create reproducible archives
+
+ -- Dimitry Ishenko <dimitry.ishenko@gmail.com>  Sat, 26 Sep 2026 14:42:23 -0400
+
 dev-meta (0.24) unstable; urgency=medium
 
   * Add Debian release workflow
