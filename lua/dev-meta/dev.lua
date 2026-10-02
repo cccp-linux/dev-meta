@@ -1,8 +1,10 @@
-local function map(mode, lhs, rhs)
-    vim.keymap.set(mode, lhs, rhs, {noremap = true})
+local function map(mode, lhs, rhs, opts)
+    vim.keymap.set(mode, lhs, rhs, opts)
 end
 
 -- highlight
+local group = vim.api.nvim_create_augroup("LspDocHighlight", { clear = true })
+
 vim.api.nvim_create_autocmd("LspAttach", {
     callback = function(args)
         local client = vim.lsp.get_client_by_id(args.data.client_id)
@@ -10,11 +12,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
             return
         end
 
-        vim.keymap.set("n", "<leader>h", vim.lsp.buf.document_highlight, { buffer = args.buf })
+        map("n", "<leader>l", vim.lsp.buf.document_highlight, { buffer = args.buf })
 
-        local group = vim.api.nvim_create_augroup("LspDocHighlight", { clear = false })
         vim.api.nvim_clear_autocmds({ buffer = args.buf, group = group })
-
         vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
             buffer = args.buf, group = group,
             callback = vim.lsp.buf.clear_references,
@@ -24,19 +24,19 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 -- CMake
 vim.api.nvim_create_user_command("CMake", function(opts)
-   local mp0 = vim.opt.makeprg
-   vim.opt.makeprg = "cmake"
+   local mp = vim.bo.makeprg
+   vim.bo.makeprg = "cmake"
    vim.cmd("make " .. table.concat(opts.fargs, " "))
-   vim.opt.makeprg = mp0
+   vim.bo.makeprg = mp
 end, { nargs = "*" })
 
 if type(create_alias) == "function" then
    create_alias("cmake", "CMake")
 end
 
-map("n", "<leader>mb", ":CMake --build build -j `nproc`")
-map("n", "<leader>mg", ":CMake -B build")
-map("n", "<leader>mx", ":CMake -E rm -rf build")
+map("n", "<leader>mb", ":CMake --build build -j `nproc` ")
+map("n", "<leader>mg", ":CMake -B build ")
+map("n", "<leader>mx", ":CMake -E rm -rf build ")
 
 -- diff
 map("n", "<leader>do", "<cmd>windo diffoff<cr>")
@@ -59,25 +59,26 @@ vim.cmd([[
 
 -- Debug
 vim.api.nvim_create_user_command("Debug", function(opts)
-    local spr = vim.opt.splitright
-    vim.opt.splitright = false
+    local spr = vim.o.splitright
+    vim.o.splitright = false
+    local ok, err = pcall(vim.cmd, "Termdebug " .. opts.args)
+    vim.o.splitright = spr
 
-    vim.cmd("Termdebug " .. opts.args)
-    vim.api.nvim_win_set_width(0, 42)
-
-    vim.opt.splitright = spr
+    if ok then vim.api.nvim_win_set_width(0, 42)
+    else error(err) end
 end, { nargs = "*", complete = "file" })
 
 -- Launch
 vim.api.nvim_create_user_command("Launch", function(opts)
-    local spr = vim.opt.splitright
-    vim.opt.splitright = false
+    local spr = vim.o.splitright
+    vim.o.splitright = false
+    local ok, err = pcall(vim.cmd, "TermdebugCommand " .. opts.args)
+    vim.o.splitright = spr
 
-    vim.cmd("TermdebugCommand " .. opts.args)
-    vim.api.nvim_win_set_width(0, 42)
-
-    vim.opt.splitright = spr
-    vim.cmd("wincmd p | stopinsert")
+    if ok then
+        vim.api.nvim_win_set_width(0, 42)
+        vim.cmd("wincmd p | stopinsert")
+    else error(err) end
 end, { nargs = "+", complete = "file" })
 
 if type(create_alias) == "function" then
