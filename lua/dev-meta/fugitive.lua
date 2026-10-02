@@ -2,8 +2,8 @@ if type(create_alias) == "function" then
     create_alias("git", "Git")
 end
 
-local function map(mode, lhs, rhs)
-    vim.keymap.set(mode, lhs, rhs, {noremap = true})
+local function map(mode, lhs, rhs, opts)
+    vim.keymap.set(mode, lhs, rhs, opts)
 end
 
 map("n", "<leader>gb", "<cmd>Git blame<cr>")

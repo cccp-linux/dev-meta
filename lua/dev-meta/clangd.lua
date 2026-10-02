@@ -36,4 +36,5 @@ vim.lsp.config("clangd", {
         vim.keymap.set("n", "gh", "<cmd>LspClangdSwitchSourceHeader<cr>", { buffer = bufnr })
     end
 })
+
 vim.lsp.enable("clangd")

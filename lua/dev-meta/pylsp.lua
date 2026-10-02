@@ -10,4 +10,5 @@ vim.lsp.config("pylsp", {
         "setup.py",
     },
 })
+
 vim.lsp.enable("pylsp")
