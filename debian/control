@@ -5,6 +5,7 @@ Maintainer: Dimitry Ishenko <dimitry.ishenko@gmail.com>
 Rules-Requires-Root: no
 Build-Depends:
  debhelper-compat (= 13),
+ dh-vim-addon,
 Standards-Version: 4.7.2
 Vcs-Browser: https://github.com/cccp-linux/dev-meta
 Vcs-Git: https://github.com/cccp-linux/dev-meta.git
@@ -13,6 +14,7 @@ Package: dev-meta
 Architecture: all
 Depends:
  ${misc:Depends},
+ ${vim-addon:Depends},
  arch-test,
  build-essential,
  cmake,
