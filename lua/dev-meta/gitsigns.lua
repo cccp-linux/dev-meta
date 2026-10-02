@@ -1,17 +1,17 @@
-require("gitsigns").setup({
+local gs = require("gitsigns")
+
+gs.setup({
     signs = {
-        delete      = { text = "╽" },
-        topdelete   = { text = "╿" },
-        changedelete= { text = "╽" },
+        delete       = { text = "╽" },
+        topdelete    = { text = "╿" },
+        changedelete = { text = "╽" },
     },
     signs_staged = {
-        delete      = { text = "╽" },
-        topdelete   = { text = "╿" },
-        changedelete= { text = "╽" },
+        delete       = { text = "╽" },
+        topdelete    = { text = "╿" },
+        changedelete = { text = "╽" },
     },
     on_attach = function(bufnr)
-        local gs = require("gitsigns")
-
         local function bufmap(mode, lhs, rhs)
             vim.keymap.set(mode, lhs, rhs, { buffer = bufnr })
         end
@@ -37,10 +37,7 @@ require("gitsigns").setup({
         bufmap("n", "<leader>hp", gs.preview_hunk)
         bufmap("n", "<leader>hi", gs.preview_hunk_inline)
 
-        bufmap("n", "<leader>hb", function() gs.blame_line({full = true}) end)
-
-        bufmap("n", "<leader>hd", gs.diffthis)
-        bufmap("n", "<leader>hD", function() gs.diffthis("~") end)
+        bufmap("n", "<leader>hb", function() gs.blame_line({ full = true }) end)
 
         bufmap("n", "<leader>hq", gs.setqflist)
         bufmap("n", "<leader>hQ", function() gs.setqflist("all") end)
@@ -48,6 +45,6 @@ require("gitsigns").setup({
         bufmap("n", "<leader>tb", gs.toggle_current_line_blame)
         bufmap("n", "<leader>tw", gs.toggle_word_diff)
 
-        bufmap({"o", "x"}, "ih" , gs.select_hunk)
+        bufmap({ "o", "x" }, "ih" , gs.select_hunk)
     end
 })
