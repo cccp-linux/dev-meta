@@ -1,3 +1,13 @@
+dev-meta (0.27) unstable; urgency=medium
+
+  * clangd.lua: clean up
+  * gitsigns.lua: clean up
+  * dev.lua: clean up
+  * Clean up
+  * Convert into neovim addon
+
+ -- Dimitry Ishenko <dimitry.ishenko@gmail.com>  Fri, 02 Oct 2026 16:51:56 -0400
+
 dev-meta (0.26) unstable; urgency=medium
 
   * Formatting
