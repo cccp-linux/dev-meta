@@ -29,11 +29,10 @@ vim.lsp.config("clangd", {
     }}},
 
     on_attach = function(client, bufnr)
-        vim.api.nvim_buf_create_user_command(bufnr, "LspClangdSwitchSourceHeader",
-            function() switch_source_header(client, bufnr) end,
-            { desc = "Switch between source/header" }
+        vim.api.nvim_buf_create_user_command(bufnr, "SwitchSourceHeader",
+            function() switch_source_header(client, bufnr) end
         )
-        vim.keymap.set("n", "gh", "<cmd>LspClangdSwitchSourceHeader<cr>", { buffer = bufnr })
+        vim.keymap.set("n", "gh", "<cmd>SwitchSourceHeader<cr>", { buffer = bufnr })
     end
 })
 
