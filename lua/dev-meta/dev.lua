@@ -44,6 +44,7 @@ map("n", "<leader>dt", "<cmd>windo diffthis<cr>")
 
 -- termdebug
 vim.g.termdebug_config = {
+    command = { "gdb", "-iex", "set debuginfod enabled off" },
     signs = { "󰲠", "󰲢", "󰲤", "󰲦", "󰲨", "󰲪", "󰲬", "󰲮", "󰲰" },
     sign = "󰲲",
     wide = 1
