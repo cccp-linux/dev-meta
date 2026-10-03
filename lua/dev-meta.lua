@@ -1,5 +1,0 @@
-require("dev-meta.clangd")
-require("dev-meta.dev")
-require("dev-meta.fugitive")
-require("dev-meta.gitsigns")
-require("dev-meta.pylsp")
