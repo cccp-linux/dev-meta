@@ -30,7 +30,8 @@ vim.lsp.config("clangd", {
 
     on_attach = function(client, bufnr)
         vim.api.nvim_buf_create_user_command(bufnr, "SwitchSourceHeader",
-            function() switch_source_header(client, bufnr) end
+            function() switch_source_header(client, bufnr) end,
+            { desc = "Switch between source/header" }
         )
         vim.keymap.set("n", "gh", "<cmd>SwitchSourceHeader<cr>", { buffer = bufnr })
     end
