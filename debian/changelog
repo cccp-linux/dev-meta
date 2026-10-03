@@ -1,3 +1,13 @@
+dev-meta (0.29) unstable; urgency=medium
+
+  * clangd.lua: tweak
+  * clangd.lua: fix
+  * dev.lua: fix TermdebugCommand hang
+  * dev.lua: switch to lua
+  * dev.lua: load termdebug on demand
+
+ -- Dimitry Ishenko <dimitry.ishenko@gmail.com>  Fri, 02 Oct 2026 21:57:46 -0400
+
 dev-meta (0.28) unstable; urgency=medium
 
   * dev-meta.lua: fix
