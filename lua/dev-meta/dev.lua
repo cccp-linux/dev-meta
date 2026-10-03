@@ -43,21 +43,21 @@ map("n", "<leader>do", "<cmd>windo diffoff<cr>")
 map("n", "<leader>dt", "<cmd>windo diffthis<cr>")
 
 -- termdebug
-vim.cmd([[
-    if !exists("g:termdebug_config")
-        let g:termdebug_config = { }
-    endif
-
-    let g:termdebug_config.signs = ["󰲠", "󰲢", "󰲤", "󰲦", "󰲨", "󰲪", "󰲬", "󰲮", "󰲰"]
-    let g:termdebug_config.sign = "󰲲"
-    let g:termdebug_config.wide = 1
-
-    highlight debugBreakpoint ctermfg=darkred ctermbg=NONE guifg=darkred guibg=NONE
-]])
+vim.g.termdebug_config = {
+    signs = { "󰲠", "󰲢", "󰲤", "󰲦", "󰲨", "󰲪", "󰲬", "󰲮", "󰲰" },
+    sign = "󰲲",
+    wide = 1
+}
 
 local function load_termdebug()
     if vim.fn.exists(":Termdebug") == 0 then vim.cmd.packadd("termdebug") end
 end
+
+local function set_breakpoint_hl()
+    vim.api.nvim_set_hl(0, "debugBreakpoint", { ctermfg = "darkred", fg = "darkred" })
+end
+set_breakpoint_hl()
+vim.api.nvim_create_autocmd("ColorScheme", { callback = set_breakpoint_hl })
 
 -- Debug
 vim.api.nvim_create_user_command("Debug", function(opts)
