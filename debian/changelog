@@ -1,3 +1,9 @@
+dev-meta (0.30) unstable; urgency=medium
+
+  * dev-meta => dev
+
+ -- Dimitry Ishenko <dimitry.ishenko@gmail.com>  Sat, 03 Oct 2026 15:03:28 -0400
+
 dev-meta (0.29) unstable; urgency=medium
 
   * clangd.lua: tweak
