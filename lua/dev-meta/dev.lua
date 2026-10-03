@@ -44,8 +44,6 @@ map("n", "<leader>dt", "<cmd>windo diffthis<cr>")
 
 -- termdebug
 vim.cmd([[
-    packadd termdebug
-
     if !exists("g:termdebug_config")
         let g:termdebug_config = { }
     endif
@@ -57,8 +55,14 @@ vim.cmd([[
     highlight debugBreakpoint ctermfg=darkred ctermbg=NONE guifg=darkred guibg=NONE
 ]])
 
+local function load_termdebug()
+    if vim.fn.exists(":Termdebug") == 0 then vim.cmd.packadd("termdebug") end
+end
+
 -- Debug
 vim.api.nvim_create_user_command("Debug", function(opts)
+    load_termdebug()
+
     local spr = vim.o.splitright
     vim.o.splitright = false
     local ok, err = pcall(vim.cmd, "Termdebug " .. opts.args)
@@ -70,6 +74,8 @@ end, { nargs = "*", complete = "file" })
 
 -- Launch
 vim.api.nvim_create_user_command("Launch", function(opts)
+    load_termdebug()
+
     local spr = vim.o.splitright
     vim.o.splitright = false
     local ok, err = pcall(vim.cmd, "TermdebugCommand " .. opts.args)
