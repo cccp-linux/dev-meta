@@ -1,6 +1,10 @@
 # Development Meta-package
 
-_TODO_
+Add the following to your `.config/nvim/init.lua`:
+
+```lua
+require("dev")
+```
 
 ## Authors
 

@@ -51,3 +51,5 @@ Recommends:
  uscan,
  vim-fugitive,
 Description: Development meta-package
+ Add the following to your .config/nvim/init.lua:
+ * require("dev")
