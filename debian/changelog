@@ -1,3 +1,9 @@
+dev-meta (0.32) unstable; urgency=medium
+
+  * basic.lua: match sign column bg color for breakpoints
+
+ -- Dimitry Ishenko <dimitry.ishenko@gmail.com>  Thu, 29 Oct 2026 10:29:47 -0400
+
 dev-meta (0.31) unstable; urgency=medium
 
   * Add install blurb
