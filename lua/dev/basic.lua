@@ -55,7 +55,9 @@ local function load_termdebug()
 end
 
 local function set_breakpoint_hl()
-    vim.api.nvim_set_hl(0, "debugBreakpoint", { ctermfg = "darkred", fg = "darkred" })
+    vim.api.nvim_set_hl(0, "debugBreakpoint", {
+        fg = "darkred", bg = vim.api.nvim_get_hl(0, { name = "SignColumn" }).bg
+    })
 end
 set_breakpoint_hl()
 vim.api.nvim_create_autocmd("ColorScheme", { callback = set_breakpoint_hl })
